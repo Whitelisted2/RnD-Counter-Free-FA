@@ -1,0 +1,331 @@
+p1: spec: []((a && <> b) -> ((!c && !b) U (b || ((c && !b) U (b || ((!c && !b) U (b || ((c && !b) U (b || (!c U b))))))))))
+p1: ugly_RE: 
+p1: bad_RE: (((((((<b>|<c>)|<d>)|<f>)|<g>)|<h>)|((<a>(<a>|<h>)*)(((<b>|<d>)|<f>)|<g>)))|(((<e>|((<a>(<a>|<h>)*)(<c>|<e>)))(<c>|<e>)*)((((((<b>|<d>)|<f>)|<g>)|(((<a>|<h>)(<a>|<h>)*)(((<b>|<d>)|<f>)|<g>)))|(((((<a>|<h>)(<a>|<h>)*)(<c>|<e>))(<c>|<e>)*)(((<b>|<d>)|<f>)|<g>)))|(((((((<a>|<h>)(<a>|<h>)*)(<c>|<e>))(<c>|<e>)*)(<a>|<h>))(<a>|<h>)*)(((<b>|<d>)|<f>)|<g>)))))*(((<e>|((<a>(<a>|<h>)*)(<c>|<e>)))(<c>|<e>)*)(((((((<a>|<h>)(<a>|<h>)*)(<c>|<e>))(<c>|<e>)*)(<a>|<h>))(<a>|<h>)*)(((<c>|<e>)(((<a>|<c>)|<e>)|<h>)*)(((<b>|<d>)|<f>)|<g>))))
+p1: good_RE: 
+
+p2: spec: []((a && <> b) -> (c -> ((!(d || e) && !b) U f)) U b)
+p2: ugly_RE: 
+p2: bad_RE: (((((((((((((((((((((((((((((((((((((((((((((((((<b>|<c>)|<d>)|<e>)|<f>)|<g>)|<i>)|<j>)|<l>)|<m>)|<n>)|<p>)|<q>)|<s>)|<t>)|<u>)|<w>)|<x>)|<y>)|<aa>)|<ab>)|<ac>)|<ae>)|<af>)|<ah>)|<ai>)|<aj>)|<al>)|<am>)|<an>)|<ap>)|<aq>)|<ar>)|<at>)|<au>)|<av>)|<ax>)|<ay>)|<az>)|<bb>)|<bc>)|<bd>)|<bf>)|<bg>)|<bh>)|<bj>)|<bk>)|<bl>)|((<h>(((<a>|<c>)|<h>)|<bl>)*)(((((((((((((((<ah>|<ai>)|<al>)|<am>)|<ap>)|<aq>)|<at>)|<au>)|<ax>)|<ay>)|<bb>)|<bc>)|<bf>)|<bg>)|<bj>)|<bk>)))|((((((((((((((<a>|<k>)|<r>)|<z>)|<ag>)|<ak>)|<ao>)|<as>)|<aw>)|<ba>)|<be>)|<bi>)|((<h>(((<a>|<c>)|<h>)|<bl>)*)(((((((((((((((<f>|<ag>)|<aj>)|<ak>)|<an>)|<ao>)|<ar>)|<as>)|<av>)|<aw>)|<az>)|<ba>)|<bd>)|<be>)|<bh>)|<bi>)))((((((((((((((((((((((((<a>|<d>)|<e>)|<f>)|<k>)|<r>)|<y>)|<z>)|<ag>)|<aj>)|<ak>)|<an>)|<ao>)|<ar>)|<as>)|<av>)|<aw>)|<az>)|<ba>)|<bd>)|<be>)|<bh>)|<bi>)|<bl>)|(((<c>|<h>)(((<a>|<c>)|<h>)|<bl>)*)(((((((((((((((<f>|<ag>)|<aj>)|<ak>)|<an>)|<ao>)|<ar>)|<as>)|<av>)|<aw>)|<az>)|<ba>)|<bd>)|<be>)|<bh>)|<bi>)))*)((((((((((((((((((((((((((((((((<b>|<g>)|<i>)|<j>)|<l>)|<m>)|<p>)|<q>)|<s>)|<t>)|<w>)|<x>)|<aa>)|<ab>)|<ae>)|<af>)|<ah>)|<ai>)|<al>)|<am>)|<ap>)|<aq>)|<at>)|<au>)|<ax>)|<ay>)|<bb>)|<bc>)|<bf>)|<bg>)|<bj>)|<bk>)|(((<c>|<h>)(((<a>|<c>)|<h>)|<bl>)*)(((((((((((((((<ah>|<ai>)|<al>)|<am>)|<ap>)|<aq>)|<at>)|<au>)|<ax>)|<ay>)|<bb>)|<bc>)|<bf>)|<bg>)|<bj>)|<bk>)))))*((((<h>(((<a>|<c>)|<h>)|<bl>)*)(((((((((((((((<b>|<g>)|<i>)|<j>)|<l>)|<m>)|<p>)|<q>)|<s>)|<t>)|<w>)|<x>)|<aa>)|<ab>)|<ae>)|<af>))|(((((<o>|<v>)|<ad>)|((<h>(((<a>|<c>)|<h>)|<bl>)*)(((((((((((<d>|<e>)|<k>)|<n>)|<o>)|<r>)|<u>)|<v>)|<y>)|<z>)|<ac>)|<ad>)))(((((((((((((((((((((((((((((((<a>|<c>)|<d>)|<e>)|<f>)|<h>)|<k>)|<n>)|<o>)|<r>)|<u>)|<v>)|<y>)|<z>)|<ac>)|<ad>)|<ag>)|<aj>)|<ak>)|<an>)|<ao>)|<ar>)|<as>)|<av>)|<aw>)|<az>)|<ba>)|<bd>)|<be>)|<bh>)|<bi>)|<bl>)*)(((((((((((((((((((((((((((((((<b>|<g>)|<i>)|<j>)|<l>)|<m>)|<p>)|<q>)|<s>)|<t>)|<w>)|<x>)|<aa>)|<ab>)|<ae>)|<af>)|<ah>)|<ai>)|<al>)|<am>)|<ap>)|<aq>)|<at>)|<au>)|<ax>)|<ay>)|<bb>)|<bc>)|<bf>)|<bg>)|<bj>)|<bk>)))|((((((((((((((<a>|<k>)|<r>)|<z>)|<ag>)|<ak>)|<ao>)|<as>)|<aw>)|<ba>)|<be>)|<bi>)|((<h>(((<a>|<c>)|<h>)|<bl>)*)(((((((((((((((<f>|<ag>)|<aj>)|<ak>)|<an>)|<ao>)|<ar>)|<as>)|<av>)|<aw>)|<az>)|<ba>)|<bd>)|<be>)|<bh>)|<bi>)))((((((((((((((((((((((((<a>|<d>)|<e>)|<f>)|<k>)|<r>)|<y>)|<z>)|<ag>)|<aj>)|<ak>)|<an>)|<ao>)|<ar>)|<as>)|<av>)|<aw>)|<az>)|<ba>)|<bd>)|<be>)|<bh>)|<bi>)|<bl>)|(((<c>|<h>)(((<a>|<c>)|<h>)|<bl>)*)(((((((((((((((<f>|<ag>)|<aj>)|<ak>)|<an>)|<ao>)|<ar>)|<as>)|<av>)|<aw>)|<az>)|<ba>)|<bd>)|<be>)|<bh>)|<bi>)))*)((((<c>|<h>)(((<a>|<c>)|<h>)|<bl>)*)(((((((((((((((<b>|<g>)|<i>)|<j>)|<l>)|<m>)|<p>)|<q>)|<s>)|<t>)|<w>)|<x>)|<aa>)|<ab>)|<ae>)|<af>))|((((((((<n>|<o>)|<u>)|<v>)|<ac>)|<ad>)|(((<c>|<h>)(((<a>|<c>)|<h>)|<bl>)*)(((((((((((<d>|<e>)|<k>)|<n>)|<o>)|<r>)|<u>)|<v>)|<y>)|<z>)|<ac>)|<ad>)))(((((((((((((((((((((((((((((((<a>|<c>)|<d>)|<e>)|<f>)|<h>)|<k>)|<n>)|<o>)|<r>)|<u>)|<v>)|<y>)|<z>)|<ac>)|<ad>)|<ag>)|<aj>)|<ak>)|<an>)|<ao>)|<ar>)|<as>)|<av>)|<aw>)|<az>)|<ba>)|<bd>)|<be>)|<bh>)|<bi>)|<bl>)*)(((((((((((((((((((((((((((((((<b>|<g>)|<i>)|<j>)|<l>)|<m>)|<p>)|<q>)|<s>)|<t>)|<w>)|<x>)|<aa>)|<ab>)|<ae>)|<af>)|<ah>)|<ai>)|<al>)|<am>)|<ap>)|<aq>)|<at>)|<au>)|<ax>)|<ay>)|<bb>)|<bc>)|<bf>)|<bg>)|<bj>)|<bk>)))))
+p2: good_RE: 
+
+p3: spec: <> connect -> (!(disconnect || poke || send || blockingsend || receive || blockingreceive) U connect)
+p3: ugly_RE: 
+p3: bad_RE: ((<dx>*((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((<a>|<b>)|<d>)|<e>)|<f>)|<g>)|<h>)|<l>)|<m>)|<n>)|<s>)|<t>)|<u>)|<z>)|<aa>)|<ab>)|<ac>)|<ah>)|<ai>)|<aj>)|<ao>)|<ap>)|<aq>)|<ar>)|<aw>)|<ax>)|<ay>)|<az>)|<be>)|<bf>)|<bg>)|<bh>)|<bm>)|<bn>)|<bo>)|<bt>)|<bu>)|<bv>)|<bw>)|<cb>)|<cc>)|<cd>)|<ce>)|<cj>)|<ck>)|<cl>)|<cm>)|<cr>)|<cs>)|<ct>)|<cu>)|<cz>)|<da>)|<db>)|<dc>)|<dh>)|<di>)|<dj>)|<dk>)|<dp>)|<dq>)|<dr>)|<ds>))(((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((<a>|<b>)|<d>)|<e>)|<f>)|<g>)|<h>)|<l>)|<m>)|<n>)|<s>)|<t>)|<u>)|<z>)|<aa>)|<ab>)|<ac>)|<ah>)|<ai>)|<aj>)|<ao>)|<ap>)|<aq>)|<ar>)|<aw>)|<ax>)|<ay>)|<az>)|<be>)|<bf>)|<bg>)|<bh>)|<bm>)|<bn>)|<bo>)|<bt>)|<bu>)|<bv>)|<bw>)|<cb>)|<cc>)|<cd>)|<ce>)|<cj>)|<ck>)|<cl>)|<cm>)|<cr>)|<cs>)|<ct>)|<cu>)|<cz>)|<da>)|<db>)|<dc>)|<dh>)|<di>)|<dj>)|<dk>)|<dp>)|<dq>)|<dr>)|<ds>)|<dx>)*)(((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((<c>|<i>)|<j>)|<k>)|<o>)|<p>)|<q>)|<r>)|<v>)|<w>)|<x>)|<y>)|<ad>)|<ae>)|<af>)|<ag>)|<ak>)|<al>)|<am>)|<an>)|<as>)|<at>)|<au>)|<av>)|<ba>)|<bb>)|<bc>)|<bd>)|<bi>)|<bj>)|<bk>)|<bl>)|<bp>)|<bq>)|<br>)|<bs>)|<bx>)|<by>)|<bz>)|<ca>)|<cf>)|<cg>)|<ch>)|<ci>)|<cn>)|<co>)|<cp>)|<cq>)|<cv>)|<cw>)|<cx>)|<cy>)|<dd>)|<de>)|<df>)|<dg>)|<dl>)|<dm>)|<dn>)|<do>)|<dt>)|<du>)|<dv>)|<dw>)
+p3: good_RE: <dx>*(((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((<c>|<i>)|<j>)|<k>)|<o>)|<p>)|<q>)|<r>)|<v>)|<w>)|<x>)|<y>)|<ad>)|<ae>)|<af>)|<ag>)|<ak>)|<al>)|<am>)|<an>)|<as>)|<at>)|<au>)|<av>)|<ba>)|<bb>)|<bc>)|<bd>)|<bi>)|<bj>)|<bk>)|<bl>)|<bp>)|<bq>)|<br>)|<bs>)|<bx>)|<by>)|<bz>)|<ca>)|<cf>)|<cg>)|<ch>)|<ci>)|<cn>)|<co>)|<cp>)|<cq>)|<cv>)|<cw>)|<cx>)|<cy>)|<dd>)|<de>)|<df>)|<dg>)|<dl>)|<dm>)|<dn>)|<do>)|<dt>)|<du>)|<dv>)|<dw>)
+
+p4: spec: []((disconnect && <> connect) -> !(disconnect || poke || send || blockingsend || receive || blockingreceive) U connect)
+p4: ugly_RE: 
+p4: bad_RE: (((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((<a>|<b>)|<c>)|<e>)|<f>)|<g>)|<h>)|<i>)|<j>)|<k>)|<o>)|<p>)|<q>)|<r>)|<s>)|<t>)|<u>)|<v>)|<w>)|<x>)|<y>)|<ad>)|<ae>)|<af>)|<ag>)|<ah>)|<ai>)|<aj>)|<ak>)|<al>)|<am>)|<an>)|<as>)|<at>)|<au>)|<av>)|<aw>)|<ax>)|<ay>)|<az>)|<ba>)|<bb>)|<bc>)|<bd>)|<bi>)|<bj>)|<bk>)|<bl>)|<bm>)|<bn>)|<bo>)|<bp>)|<bq>)|<br>)|<bs>)|<bx>)|<by>)|<bz>)|<ca>)|<cb>)|<cc>)|<cd>)|<ce>)|<cf>)|<cg>)|<ch>)|<ci>)|<cn>)|<co>)|<cp>)|<cq>)|<cr>)|<cs>)|<ct>)|<cu>)|<cv>)|<cw>)|<cx>)|<cy>)|<dd>)|<de>)|<df>)|<dg>)|<dh>)|<di>)|<dj>)|<dk>)|<dl>)|<dm>)|<dn>)|<do>)|<dt>)|<du>)|<dv>)|<dw>)|<dx>)*(((((((((((((((((((((((((((((((((<d>|<l>)|<m>)|<n>)|<z>)|<aa>)|<ab>)|<ac>)|<ao>)|<ap>)|<aq>)|<ar>)|<be>)|<bf>)|<bg>)|<bh>)|<bt>)|<bu>)|<bv>)|<bw>)|<cj>)|<ck>)|<cl>)|<cm>)|<cz>)|<da>)|<db>)|<dc>)|<dp>)|<dq>)|<dr>)|<ds>)(((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((<a>|<b>)|<d>)|<e>)|<f>)|<g>)|<h>)|<l>)|<m>)|<n>)|<s>)|<t>)|<u>)|<z>)|<aa>)|<ab>)|<ac>)|<ah>)|<ai>)|<aj>)|<ao>)|<ap>)|<aq>)|<ar>)|<aw>)|<ax>)|<ay>)|<az>)|<be>)|<bf>)|<bg>)|<bh>)|<bm>)|<bn>)|<bo>)|<bt>)|<bu>)|<bv>)|<bw>)|<cb>)|<cc>)|<cd>)|<ce>)|<cj>)|<ck>)|<cl>)|<cm>)|<cr>)|<cs>)|<ct>)|<cu>)|<cz>)|<da>)|<db>)|<dc>)|<dh>)|<di>)|<dj>)|<dk>)|<dp>)|<dq>)|<dr>)|<ds>)|<dx>)*)(((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((<c>|<i>)|<j>)|<k>)|<o>)|<p>)|<q>)|<r>)|<v>)|<w>)|<x>)|<y>)|<ad>)|<ae>)|<af>)|<ag>)|<ak>)|<al>)|<am>)|<an>)|<as>)|<at>)|<au>)|<av>)|<ba>)|<bb>)|<bc>)|<bd>)|<bi>)|<bj>)|<bk>)|<bl>)|<bp>)|<bq>)|<br>)|<bs>)|<bx>)|<by>)|<bz>)|<ca>)|<cf>)|<cg>)|<ch>)|<ci>)|<cn>)|<co>)|<cp>)|<cq>)|<cv>)|<cw>)|<cx>)|<cy>)|<dd>)|<de>)|<df>)|<dg>)|<dl>)|<dm>)|<dn>)|<do>)|<dt>)|<du>)|<dv>)|<dw>))
+p4: good_RE: 
+
+p5: spec: [](a && (b || c) -> (!(d || e)) U (f || []!(d || e)))
+p5: ugly_RE: 
+p5: bad_RE: ((((((((((((((((((((((((((((((((((((((((((((((((((((<a>|<b>)|<c>)|<d>)|<e>)|<f>)|<i>)|<k>)|<l>)|<n>)|<p>)|<r>)|<s>)|<u>)|<w>)|<y>)|<z>)|<aa>)|<ac>)|<ae>)|<ag>)|<ah>)|<ai>)|<aj>)|<ak>)|<al>)|<am>)|<an>)|<ao>)|<ap>)|<aq>)|<ar>)|<as>)|<at>)|<au>)|<av>)|<aw>)|<ax>)|<ay>)|<az>)|<ba>)|<bb>)|<bc>)|<bd>)|<be>)|<bf>)|<bg>)|<bh>)|<bi>)|<bj>)|<bk>)|<bl>)|((((<g>|<h>)|<j>)(((((((<a>|<b>)|<c>)|<g>)|<h>)|<i>)|<j>)|<bl>)*)(((((((((((((((((((((((((((((((<f>|<ag>)|<ah>)|<ai>)|<aj>)|<ak>)|<al>)|<am>)|<an>)|<ao>)|<ap>)|<aq>)|<ar>)|<as>)|<at>)|<au>)|<av>)|<aw>)|<ax>)|<ay>)|<az>)|<ba>)|<bb>)|<bc>)|<bd>)|<be>)|<bf>)|<bg>)|<bh>)|<bi>)|<bj>)|<bk>)))*(((((((((<m>|<o>)|<q>)|<t>)|<v>)|<x>)|<ab>)|<ad>)|<af>)|((((<g>|<h>)|<j>)(((((((<a>|<b>)|<c>)|<g>)|<h>)|<i>)|<j>)|<bl>)*)(((((((((((((((((((((((<d>|<e>)|<k>)|<l>)|<m>)|<n>)|<o>)|<p>)|<q>)|<r>)|<s>)|<t>)|<u>)|<v>)|<w>)|<x>)|<y>)|<z>)|<aa>)|<ab>)|<ac>)|<ad>)|<ae>)|<af>)))
+p5: good_RE: 
+
+p6: spec: []((a -> b) && (c -> d) && (e -> f)) 
+p6: ugly_RE: 
+p6: bad_RE: ((((((((((((((((((((((((((<b>|<d>)|<f>)|<g>)|<l>)|<m>)|<n>)|<p>)|<q>)|<ah>)|<ai>)|<an>)|<ap>)|<aq>)|<ar>)|<at>)|<au>)|<av>)|<ax>)|<ay>)|<bd>)|<bf>)|<bg>)|<bh>)|<bj>)|<bk>)|<bl>)*((((((((((((((((((((((((((((((((((((<a>|<c>)|<e>)|<h>)|<i>)|<j>)|<k>)|<o>)|<r>)|<s>)|<t>)|<u>)|<v>)|<w>)|<x>)|<y>)|<z>)|<aa>)|<ab>)|<ac>)|<ad>)|<ae>)|<af>)|<ag>)|<aj>)|<ak>)|<al>)|<am>)|<ao>)|<as>)|<aw>)|<az>)|<ba>)|<bb>)|<bc>)|<be>)|<bi>)
+p6: good_RE: 
+
+p7: spec: []((return && (<> call)) -> ((! callwork) U call))
+p7: ugly_RE: 
+p7: bad_RE: ((((((<a>|<b>)|<d>)|<e>)|<g>)|<h>)|((<c>(<c>|<h>)*)(((<a>|<d>)|<e>)|<g>)))*(((<f>|((<c>(<c>|<h>)*)(<b>|<f>)))(((<b>|<c>)|<f>)|<h>)*)(((<a>|<d>)|<e>)|<g>))
+p7: good_RE: 
+
+p8: spec: []((a && <> b) -> !(c || d) U b) 
+p8: ugly_RE: 
+p8: bad_RE: ((((((((((((<b>|<c>)|<d>)|<e>)|<g>)|<h>)|<j>)|<k>)|<l>)|<n>)|<o>)|<p>)|((<a>(<a>|<p>)*)(((((((<b>|<e>)|<g>)|<h>)|<j>)|<k>)|<n>)|<o>)))*(((((<f>|<i>)|<m>)|((<a>(<a>|<p>)*)(((((<c>|<d>)|<f>)|<i>)|<l>)|<m>)))(((((((<a>|<c>)|<d>)|<f>)|<i>)|<l>)|<m>)|<p>)*)(((((((<b>|<e>)|<g>)|<h>)|<j>)|<k>)|<n>)|<o>))
+p8: good_RE: 
+
+p9: spec: []((d && <> c) -> !(a || b) U c)
+p9: ugly_RE: 
+p9: bad_RE: ((((((((((((<a>|<b>)|<c>)|<e>)|<f>)|<g>)|<h>)|<l>)|<m>)|<n>)|<o>)|<p>)|((<d>(<d>|<p>)*)(((((((<c>|<f>)|<g>)|<h>)|<l>)|<m>)|<n>)|<o>)))*(((((<i>|<j>)|<k>)|((<d>(<d>|<p>)*)(((((<a>|<b>)|<e>)|<i>)|<j>)|<k>)))(((((((<a>|<b>)|<d>)|<e>)|<i>)|<j>)|<k>)|<p>)*)(((((((<c>|<f>)|<g>)|<h>)|<l>)|<m>)|<n>)|<o>))
+p9: good_RE: 
+
+p10: spec: []((b && <>(a || c)) -> !d U (a || c))
+p10: ugly_RE: 
+p10: bad_RE: ((((((((((((((<a>|<c>)|<d>)|<e>)|<f>)|<g>)|<h>)|<i>)|<k>)|<l>)|<m>)|<n>)|<o>)|<p>)|((<b>(<b>|<p>)*)(((((((((((<a>|<c>)|<e>)|<f>)|<g>)|<h>)|<i>)|<k>)|<l>)|<m>)|<n>)|<o>)))*(((<j>|((<b>(<b>|<p>)*)(<d>|<j>)))(((<b>|<d>)|<j>)|<p>)*)(((((((((((<a>|<c>)|<e>)|<f>)|<g>)|<h>)|<i>)|<k>)|<l>)|<m>)|<n>)|<o>))
+p10: good_RE: 
+
+p11: spec: []((a && <> b) -> (! b U m))
+p11: ugly_RE: 
+p11: bad_RE: ((((((<b>|<c>)|<e>)|<f>)|<g>)|<h>)|((<a>(<a>|<h>)*)(((<c>|<e>)|<f>)|<g>)))*(<d>|((<a>(<a>|<h>)*)(<b>|<d>)))
+p11: good_RE: 
+
+p12: spec: <> queuedmailsent -> (! queuedmailsent U smtpserverconnected)
+p12: ugly_RE: 
+p12: bad_RE: <d>*<a>
+p12: good_RE: <d>*(<b>|<c>)
+
+p13: spec: [](!popservermessagedelete) || <>(popservermessagedelete && <> placedinmailboxes)
+p13: ugly_RE: 
+p13: bad_RE: 
+p13: good_RE: (<a>|<d>)*(<c>|((<b>(<b>|<d>)*)(<a>|<c>)))
+
+p14: spec: (<> callexecute) -> ((!calldowork) U callexecute)
+p14: ugly_RE: 
+p14: bad_RE: ((<d>*<a>)(<a>|<d>)*)(<b>|<c>)
+p14: good_RE: <d>*(<b>|<c>)
+
+p15: spec: []((returnexecute && (<>callexecute)) -> ((!calldowork) U callexecute))
+p15: ugly_RE: 
+p15: bad_RE: ((((((<a>|<b>)|<d>)|<f>)|<g>)|<h>)|((<c>(<c>|<h>)*)(((<b>|<d>)|<f>)|<g>)))*(((<e>|((<c>(<c>|<h>)*)(<a>|<e>)))(((<a>|<c>)|<e>)|<h>)*)(((<b>|<d>)|<f>)|<g>))
+p15: good_RE: 
+
+p16: spec: []((a && !b && !c && !d) || (!a && b && !c && !d) || (!a && !b && c && !d) || (!a && !b && !c && d))
+p16: ugly_RE: 
+p16: bad_RE: (((<a>|<b>)|<c>)|<d>)*(((((((((((<e>|<f>)|<g>)|<h>)|<i>)|<j>)|<k>)|<l>)|<m>)|<n>)|<o>)|<p>)
+p16: good_RE: 
+
+p17: spec: []((connect && <> disconnect) -> !connect U disconnect)
+p17: ugly_RE: 
+p17: bad_RE: ((<b>|<c>)|<d>)*((<a>(<a>|<d>)*)(<b>|<c>))
+p17: good_RE: 
+
+p18: spec: [](blockingsendbeforesendplace -> !connected)
+p18: ugly_RE: 
+p18: bad_RE: ((<a>|<b>)|<d>)*<c>
+p18: good_RE: 
+
+p19: spec: !(ncepa || nceqa) U (naa || []!(ncepa || nceqa))
+p19: ugly_RE: 
+p19: bad_RE: <h>*((<b>|<c>)|<f>)
+p19: good_RE: <h>*(((<a>|<d>)|<e>)|<g>)
+
+p20: spec: [](naa -> (!(ncepb || nceqb) U (nab || []!(ncepb || nceqb))))
+p20: ugly_RE: 
+p20: bad_RE: ((((((((((((<b>|<c>)|<d>)|<e>)|<g>)|<h>)|<j>)|<k>)|<l>)|<n>)|<o>)|<p>)|((<a>(<a>|<p>)*)(((((((<b>|<e>)|<g>)|<h>)|<j>)|<k>)|<n>)|<o>)))*(((<f>|<i>)|<m>)|((<a>(<a>|<p>)*)(((((<c>|<d>)|<f>)|<i>)|<l>)|<m>)))
+p20: good_RE: 
+
+p21: spec: [](pszeq -> (!(nceap || ncebp) U (pszgt || []!(nceap || ncebp))))
+p21: ugly_RE: 
+p21: bad_RE: ((((((((((((<a>|<b>)|<d>)|<e>)|<i>)|<j>)|<k>)|<l>)|<m>)|<n>)|<o>)|<p>)|((<c>(<c>|<p>)*)(((((((<d>|<i>)|<j>)|<k>)|<l>)|<m>)|<n>)|<o>)))*(((<f>|<g>)|<h>)|((<c>(<c>|<p>)*)(((((<a>|<b>)|<e>)|<f>)|<g>)|<h>)))
+p21: good_RE: 
+
+p22: spec: <>registerap -> (!neap U registerap)
+p22: ugly_RE: 
+p22: bad_RE: ((<d>*<a>)(<a>|<d>)*)(<b>|<c>)
+p22: good_RE: <d>*(<b>|<c>)
+
+p23: spec: [](unregisterap -> (!notifyclienteventap U (registerap || [] !notifyclienteventap)))
+p23: ugly_RE: 
+p23: bad_RE: ((((((<a>|<b>)|<d>)|<f>)|<g>)|<h>)|((<c>(<c>|<h>)*)(((<b>|<d>)|<f>)|<g>)))*(<e>|((<c>(<c>|<h>)*)(<a>|<e>)))
+p23: good_RE: 
+
+p24: spec: <>registerap -> (!unregisterap U registerap)
+p24: ugly_RE: 
+p24: bad_RE: ((<d>*<b>)(<b>|<d>)*)(<a>|<c>)
+p24: good_RE: <d>*(<a>|<c>)
+
+p25: spec: [](afterunregisterap -> (!unregisterap U (registerap || []!unregisterap)))
+p25: ugly_RE: 
+p25: bad_RE: ((((((<b>|<c>)|<d>)|<f>)|<g>)|<h>)|((<a>(<a>|<h>)*)(((<b>|<d>)|<f>)|<g>)))*(<e>|((<a>(<a>|<h>)*)(<c>|<e>)))
+p25: good_RE: 
+
+p26: spec: [] !(cra && crb)
+p26: ugly_RE: 
+p26: bad_RE: ((<a>|<b>)|<d>)*<c>
+p26: good_RE: 
+
+p27: spec: [](a -> !<>b)
+p27: ugly_RE: 
+p27: bad_RE: (<b>|<d>)*(<c>|((<a>(<a>|<d>)*)(<b>|<c>)))
+p27: good_RE: 
+
+p28: spec: [](a -> !a U (b || []!a))
+p28: ugly_RE: 
+p28: bad_RE: ((<b>|<c>)|<d>)*<a>
+p28: good_RE: 
+
+p29: spec: []!a
+p29: ugly_RE: 
+p29: bad_RE: <b>*<a>
+p29: good_RE: 
+
+p30: spec: [](merging -> !(newid U safe))
+p30: ugly_RE: 
+p30: bad_RE: (((((<a>|<b>)|<c>)|<f>)|<h>)|((<d>(<b>|<d>)*)(<a>|<h>)))*((<e>|<g>)|((<d>(<b>|<d>)*)(((<c>|<e>)|<f>)|<g>)))
+p30: good_RE: 
+
+p31: spec: []((a && <>b) -> !c U b)
+p31: ugly_RE: 
+p31: bad_RE: ((((((<b>|<c>)|<d>)|<f>)|<g>)|<h>)|((<a>(<a>|<h>)*)(((<b>|<d>)|<f>)|<g>)))*(((<e>|((<a>(<a>|<h>)*)(<c>|<e>)))(((<a>|<c>)|<e>)|<h>)*)(((<b>|<d>)|<f>)|<g>))
+p31: good_RE: 
+
+p32: spec: []( term -> (p && q))
+p32: ugly_RE: 
+p32: bad_RE: ((((<a>|<b>)|<d>)|<g>)|<h>)*((<c>|<e>)|<f>)
+p32: good_RE: 
+
+p33: spec: [](safe -> onetop)
+p33: ugly_RE: 
+p33: bad_RE: ((<a>|<c>)|<d>)*<b>
+p33: good_RE: 
+
+p34: spec: [](a && !b)
+p34: ugly_RE: 
+p34: bad_RE: <a>*((<b>|<c>)|<d>)
+p34: good_RE: 
+
+p35: spec: (registerap -> (!term U unregisterap)) U (term || [](!term))
+p35: ugly_RE: 
+p35: bad_RE: (((<c>|<e>)|<h>)|((<a>(<a>|<h>)*)(<c>|<e>)))*((<a>(<a>|<h>)*)(<b>|<d>))
+p35: good_RE: (((<c>|<e>)|<h>)|((<a>(<a>|<h>)*)(<c>|<e>)))*((((<b>|<d>)|<f>)|<g>)|((<a>(<a>|<h>)*)(<f>|<g>)))
+
+p36: spec: [] (p -> q U r)
+p36: ugly_RE: 
+p36: bad_RE: ((((((<b>|<c>)|<e>)|<f>)|<g>)|<h>)|((<d>(<b>|<d>)*)(((<c>|<e>)|<f>)|<g>)))*(<a>|((<d>(<b>|<d>)*)(<a>|<h>)))
+p36: good_RE: 
+
+p37: spec: [] (b -> ([]!np && <>r))
+p37: ugly_RE: 
+p37: bad_RE: (((<b>|<c>)|<f>)|<h>)*((<d>|<g>)|(((<a>|<e>)(((<a>|<c>)|<e>)|<h>)*)(((<b>|<d>)|<f>)|<g>)))
+p37: good_RE: 
+
+p38: spec: (p && X q) || (q && X p)
+p38: ugly_RE: 
+p38: bad_RE: ((<d>|(<a>(<a>|<d>)))|(<b>(<b>|<d>)))|(<c><d>)
+p38: good_RE: ((<a>(<b>|<c>))|(<b>(<a>|<c>)))|(<c>((<a>|<b>)|<c>))
+
+p39: spec: <> ((a && b) && b U c)
+p39: ugly_RE: 
+p39: bad_RE: 
+p39: good_RE: ((((((<a>|<b>)|<c>)|<e>)|<f>)|<h>)|((<d>(<b>|<d>)*)(<a>|<h>)))*(<g>|((<d>(<b>|<d>)*)(((<c>|<e>)|<f>)|<g>)))
+
+p40: spec: [](a V !b)
+p40: ugly_RE: 
+p40: bad_RE: (<a>|<d>)*(<b>|<c>)
+p40: good_RE: 
+
+p41: spec: <> bp
+p41: ugly_RE: 
+p41: bad_RE: 
+p41: good_RE: <b>*<a>
+
+p42: spec: <> (p U q)
+p42: ugly_RE: 
+p42: bad_RE: 
+p42: good_RE: (<a>|<d>)*(<b>|<c>)
+
+p43: spec: a -> <>(b || c)
+p43: ugly_RE: 
+p43: bad_RE: 
+p43: good_RE: ((((((<b>|<c>)|<d>)|<e>)|<f>)|<g>)|<h>)|((<a>(<a>|<h>)*)(((((<b>|<c>)|<d>)|<e>)|<f>)|<g>))
+
+p44: spec: [](f -> []f)	
+p44: ugly_RE: 
+p44: bad_RE: ((<b>*<a>)<a>*)<b>
+p44: good_RE: 
+
+p45: spec: [](pressing -> (!apress && !bpress))
+p45: ugly_RE: 
+p45: bad_RE: ((((<a>|<b>)|<c>)|<d>)|<h>)*((<e>|<f>)|<g>)
+p45: good_RE: 
+
+p46: spec: [](a -> b)
+p46: ugly_RE: 
+p46: bad_RE: ((<b>|<c>)|<d>)*<a>
+p46: good_RE: 
+
+p47: spec: []((! mailboxselected) || <>(mailboxselected && <> mailboxwindowopen))
+p47: ugly_RE: 
+p47: bad_RE: 
+p47: good_RE: 
+
+p48: spec: [](open -> [](neterror -> <> errormessage))
+p48: ugly_RE: 
+p48: bad_RE: 
+p48: good_RE: 
+
+p49: spec: []((!messageready) || <>(messageready && <> messageinoutbox))
+p49: ugly_RE: 
+p49: bad_RE: 
+p49: good_RE: 
+
+p50: spec: []((!messagedragged) || <>(messagedragged && <> messagemoved))
+p50: ugly_RE: 
+p50: bad_RE: 
+p50: good_RE: 
+
+p51: spec: [](error -> [](errorpopup -> <> responsetopopup))
+p51: ugly_RE: 
+p51: bad_RE: 
+p51: good_RE: 
+
+p52: spec: [](messagetransferred -> [](placedinmailboxes -> <> markasunread))
+p52: ugly_RE: 
+p52: bad_RE: 
+p52: good_RE: 
+
+p53: spec: <>term -> []((registerap && (!unregisterap U (registerbp && (!unregisterap && !unregisterbp) U notifyartistsp))) -> <>(notifyartistp && (!notifyclienteventbp U notifyclienteventap)))
+p53: ugly_RE: 
+p53: bad_RE: 
+p53: good_RE: 
+
+p54: spec: [] (up -> (<> down))
+p54: ugly_RE: 
+p54: bad_RE: 
+p54: good_RE: 
+
+p55: spec: [] (p -> <>q)
+p55: ugly_RE: 
+p55: bad_RE: 
+p55: good_RE: 
+
+p56: spec: [] ((a -> <>b) && (c -> <>d)) -> [](e -> <>f)
+p56: ugly_RE: 
+p56: bad_RE: 
+p56: good_RE: 
+
+p57: spec: [](p -> <>[]q)
+p57: ugly_RE: 
+p57: bad_RE: 
+p57: good_RE: 
+
+p58: spec: []((signalfreeway && levelcrossingclosed) -> <>(complete && levelcrossingclosed))
+p58: ugly_RE: 
+p58: bad_RE: 
+p58: good_RE: 
+
+p59: spec: [](a -> <>(b || c))
+p59: ugly_RE: 
+p59: bad_RE: 
+p59: good_RE: 
+
+p60: spec: []<> (a -> (c U d))
+p60: ugly_RE: 
+p60: bad_RE: 
+p60: good_RE: 
+
+p61: spec: []<> (a -> <> d)
+p61: ugly_RE: 
+p61: bad_RE: 
+p61: good_RE: 
+
+p62: spec: <>[] p
+p62: ugly_RE: 
+p62: bad_RE: 
+p62: good_RE: 
+
+p63: spec: [] (p U !p)
+p63: ugly_RE: 
+p63: bad_RE: 
+p63: good_RE: 
+
+p64: spec: []<>f
+p64: ugly_RE: 
+p64: bad_RE: 
+p64: good_RE: 
+
+p65: spec: [](a -> <>b) && [](c -> <>d) && [](e -> <>f)
+p65: ugly_RE: 
+p65: bad_RE: 
+p65: good_RE: 
+
+p66: spec: ([]<>a) -> !<>b
+p66: ugly_RE: 
+p66: bad_RE: 
+p66: good_RE: 
+
+

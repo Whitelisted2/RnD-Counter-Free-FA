@@ -1,0 +1,11 @@
+DFA
+states
+1
+alphabet
+1
+table
+1
+start
+1
+final
+1
