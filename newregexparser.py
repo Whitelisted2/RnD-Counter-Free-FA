@@ -3,12 +3,12 @@
 from lark import Lark, Transformer
 import subprocess
 import os
+import openpyxl
 
-file_path = "sandbox/test_regex/regex1.txt"
-ratex = ""
-rid = 0 # dict populator
+want_excel = 1
 decision = "False"
 ratex_dict = {}
+rid = 0
 
 command = """ 
     cd sandbox/regex_formatter/;
@@ -18,41 +18,25 @@ command = """
     """
 regex_output = subprocess.check_output(command, shell=True, stderr=subprocess.STDOUT)
 regex_output = regex_output.decode('utf-8')
-print(regex_output)
+# print(regex_output)
 
-class MyTransformer(Transformer):
-    def print_ratex(self, token):
-        global ratex, rid, ratex_dict
-        ratex = token[0].replace("|", "U").replace("<", "").replace(">", "")
-        # print(ratex) (ratex,)
-        # print(ratex)
-        new = token[0].replace("|", " ").replace(")", "").replace("(", "").replace("*","").replace("><", "> <").split(" ")
-        new = set(new)
-        # print(ratex)
-        # print(len(new))
-        
-        # run regex_formatter
-        IsAperiodicExp(ratex)
-        
-        # print("ratex"+str(rid))
-        rid+=1
-        ratex_dict[rid] = (ratex, decision)
-        # os._exit(1)
 
-def IsAperiodicExp(exp):
-        global decision
-
+def IsAperiodicExp(line):
+        global decision, rid, ratex_dict
         cmd = """
         ./bin/gap.sh -r -b -q << EOI
         LoadPackage(\"automata\");;
         LoadPackage(\"semigroup\");;
         LoadPackage(\"datastructures\");;
 
-        rat := RationalExpression(\""""+ exp +"""\");
-        # rat := (_____)
-        ss := SyntacticSemigroupLang(rat);
+        rat := """+ line +""";
+        Print(\"\\n----\");
+        Print(rat);
+        Print(\"|\");
 
-        Print(\"Aperiodic? \");
+        ss := SyntacticSemigroupLang(rat);;
+        
+        Print(\"\\nAperiodic? \");
         AperiodicStatus := IsAperiodicSemigroup(ss);
         Print(AperiodicStatus);
         Print(\"\\n\");
@@ -62,19 +46,19 @@ def IsAperiodicExp(exp):
             Print(\"\\nTransition Semigroup: \");
             aut := RatExpToAut(rat);;
             ts := TransitionSemigroup(aut);;
-            Print(ts);
-            Print(\"\\n\");
+            # Print(ts);
+            # Print(\"\\n\");
 
             ss3 := SemigroupByGenerators(ts);;
             gen := GeneratorsOfSemigroup(ss3);;
             mon := MonoidByGenerators(gen);;
 
-            Print(\"\\nGenerators: \");
-            Print(gen);
+            # Print(\"\\nGenerators: \");
+            # Print(gen);
 
             Print(\"\\nMultiplication Table: \\n\");
             mult := MultiplicationTable(mon);
-            Print(mult);
+            # Print(mult);
             Print(\"\\n\");
         else
             # periodic
@@ -178,8 +162,6 @@ def IsAperiodicExp(exp):
                 od;;
             OutputLogTo();;
 
-            
-
         fi;
         quit;
         EOI
@@ -187,28 +169,65 @@ def IsAperiodicExp(exp):
         # print(cmd)
         output = subprocess.check_output(cmd, shell=True, stderr=subprocess.STDOUT)
         output = output.decode('utf-8')
-        print(output)
+        # print(output)
+        print("Processing ratex [", rid+1, "]")
+        output_arr = output.split("\n")
+
+        temprat = ""
+        for ele in output_arr:
+            if ele[-1] == "\\":
+                temprat += ele[:-1]
+            if ele[-1] == "|":
+                temprat += ele[:-1]
+                break
+        
+        genrat = temprat[4:]
+        # print(output)
+        # genrat = ""
+        # for outputline in output_arr:
+        #      if(len(outputline) > 3 and outputline[:4] == "----"):
+        #           genrat = outputline[4:]
+
         if output.find("Aperiodic? true") == -1:
             decision = "periodic"
+
             cmd2 = """ python3 sandbox/graphchecker.py """
             output2 = subprocess.check_output(cmd2, shell=True, stderr=subprocess.STDOUT)
             output2 = output2.decode('utf-8')
             # print("_______________________________________")
-            print(exp)
             print(output2)
             # print("_______________________________________")
 
         else:
             decision = "aperiodic"
+        rid += 1
+        ratex_dict[rid] = (genrat, decision)
 
-        
 
-# with open(file_path, 'r') as file:
-#        prop_str = file.read()
-#        #  print(prop_str)
-#        tokens = l_regex.parse(prop_str)
-#        #  print(tokens)
-#        #  parse_tree_json = tokens.pretty()
-#        result = MyTransformer().transform(tokens)
+with open("sandbox/output.txt", "r") as file:
+    lines = file.read()
+    lines = lines.split("\n")
+    for line in lines:
+        # print(line)
+        if line != "":
+            IsAperiodicExp(line)
 
-# print(ratex_dict)
+if want_excel:
+       workbook = openpyxl.Workbook()
+       # workbook = openpyxl.load_workbook('sandbox/output.xlsx')
+       sheet = workbook.active
+       sheet["A1"] = "Rational Expression"
+       sheet["B1"] = "Aperiodic?"
+    #    sheet["C1"] = "Note: The 'false' ones may not have been processed by gap (in the current format) properly."
+       for i in range(2, rid+2):
+              # print(ratex_dict[i][0])
+              # print(ratex_dict[i][1])
+              sheet["A"+str(i)] = ratex_dict[i-1][0]
+              sheet["B"+str(i)] = ratex_dict[i-1][1]
+       # if os.path.exists('sandbox/output.xlsx'):
+       #        os.remove('sandbox/output.xlsx')
+       workbook.save('sandbox/output.xlsx')
+       print("Output is saved in sandbox/output.xlsx")
+else:
+       print(ratex_dict)
+
