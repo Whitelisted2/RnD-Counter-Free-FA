@@ -1,2 +1,0 @@
-LoadPackage("automata");
-LoadPackage("semigroup");

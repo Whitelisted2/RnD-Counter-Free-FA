@@ -30,11 +30,16 @@ mult := MultiplicationTable(mon);
 Print(mult);
 Print("\n");
 
-Print("\nSubgroup: \n");
-# subgp := IsMonoid(mon);
-subgp := Subsemigroup(mon, [Transformation([2,3,3])] );
-Print(subgp);
+Print(FAtoRatExp(aut1));
 Print("\n");
+Print(aut2);
+Print("\n");
+
+# Print("\nSubgroup: \n");
+# # subgp := IsMonoid(mon);
+# subgp := Subsemigroup(mon, [Transformation([2,3,3])] );
+# Print(subgp);
+# Print("\n");
 
 
 

@@ -8,8 +8,11 @@ rm -rf getData.o
 
 ./bin/gap.sh -r -b -q << EOI
 
-Read("sandbox/loadPackages.g");
+LoadPackage("automata");
+LoadPackage("semigroup");
+
 Read("sandbox/inputAutomaton.g");
 Read("sandbox/autoOps.g");
 
+quit;
 EOI
