@@ -5,7 +5,7 @@ from lark import Lark, Transformer
 import subprocess
 import os
 
-file_path = "sandbox/test_regex/regex1.txt"
+file_path = "sandbox/test_regex/abcabc.txt"
 ratex = ""
 rid = 0 # dict populator
 decision = "False"

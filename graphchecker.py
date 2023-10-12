@@ -43,12 +43,17 @@ def getExcelCol(num):
 
 with open(file_path, 'r') as file:
     # print("_______________________________________")
+    tr_unfiltered = ""
     for line in file:
         if n == -1:
             n = int(line) # get num of nodes in graph
+        elif str(line).replace("\n", "").replace(" ", "")[-1] != ']':
+            tr_unfiltered += str(line).replace("\n", "").replace(" ", "")[:-1]
+            # print(tr_unfiltered)
         else:
-            tr_unfiltered = str(line).replace("\n", "").replace(" ", "")
+            tr_unfiltered += str(line).replace("\n", "").replace(" ", "")
             # print(tr_raw)
+            # print("hello", tr_unfiltered)
             tr_split = tr_unfiltered.split(":")
             tr_raw = tr_split[0]
             tr_word_raw = tr_split[1]
@@ -85,6 +90,8 @@ with open(file_path, 'r') as file:
             for cycle in nx.simple_cycles(G):
                 word = word_dict[key]
                 print("Mod",len(cycle),"counter for",word)
+            
+            tr_unfiltered = ""
                 
     # print("_______________________________________")
 

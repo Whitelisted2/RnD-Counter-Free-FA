@@ -1,0 +1,5 @@
+Automaton("det",5,"ab",[ [ 5, 2, 3, 4, 1 ], [ 2, 3, 4, 2, 2 ] ],[ 1 ],[ 5 ]);;
+Semigroup( [ Transformation( [ 3, 2, 1 ] ), Transformation( [ 2, 2, 2 ] ) 
+ ] )false
+gap> 
+gap> 
