@@ -14,21 +14,14 @@ int ind;
 }
 
 %token <str> IDENTIFIER
-%token DEFTOKEN RUNTIMEEQ UGLYTOKEN BADTOKEN GOODTOKEN STAR LESSTHAN GREATERTHAN OPENBRACKET CLOSEDBRACKET OR NEWLINE
+%token STAR LESSTHAN GREATERTHAN OPENBRACKET CLOSEDBRACKET OR
 %type <str> regex regterm base factor
 
-%start program
+%start equation
 
 %%
 
 //Program
-program: term program_tail
-
-program_tail: newline_tail term program_tail | newline_tail
-
-term: DEFTOKEN RUNTIMEEQ NEWLINE DEFTOKEN UGLYTOKEN equation NEWLINE DEFTOKEN BADTOKEN equation NEWLINE DEFTOKEN GOODTOKEN equation NEWLINE
-
-newline_tail: NEWLINE newline_tail | %empty
 
 equation: regex {
 	for(int i=0;i<strlen($1);i++)
