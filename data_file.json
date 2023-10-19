@@ -1,0 +1,12 @@
+{
+    "print_params": {
+        "output_file": true,
+        "output_filepath": "output"
+    },
+    "input_params": {
+        "is_one_regex": true,
+        "is_regex_list": false,
+        "input_filepath": "test_regex/input1.txt"
+    },
+    "output_params": {}
+}

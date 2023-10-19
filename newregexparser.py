@@ -1,5 +1,6 @@
 ### for the property file with regex in it.
 # first, must make the 'inductive' form of regex. then, put into GAP and manipulate
+# this is a bit more robust than regexparser.py
 
 # from lark import Lark, Transformer
 import subprocess
@@ -30,6 +31,7 @@ regex_output = regex_output.decode('utf-8')
 def IsAperiodicExp(line):
     global decision, rid, ratex_dict
     cmd = """
+    
     touch sandbox/PeriodicList.txt;
     ./bin/gap.sh -r -b -q << EOI
     LoadPackage(\"automata\");;
@@ -178,8 +180,8 @@ def IsAperiodicExp(line):
     output = output.decode('utf-8')
     # print(output)
     print("Processing ratex [", rid+1, "]")
-    output_arr = output.split("\n")
 
+    output_arr = output.split("\n")
     temprat = ""
     for ele in output_arr:
         if ele[-1] == "\\":
@@ -187,8 +189,8 @@ def IsAperiodicExp(line):
         if ele[-1] == "|":
             temprat += ele[:-1]
             break
-    
     genrat = temprat[4:]
+
     # print(output)
     # genrat = ""
     # for outputline in output_arr:

@@ -1,15 +1,33 @@
-### consider a file conatining one regex, or perhaps a list of regex.
-# this is for simple regex, such as (abab)*
+### consider a file conatining one regex, or perhaps linewise regex.
+# this is for simple regex, such as (abab)* (alphabet size <= 26)
 
 from lark import Lark, Transformer
 import subprocess
 import os
+import sys
+import json
 
-file_path = "sandbox/test_regex/abcabc.txt"
+with open("sandbox/config.json", "r") as json_file:
+    data = json.load(json_file)
+
+if len(sys.argv) < 2:
+    print("usage: python3 sandbox/regexparser.py <input-path-in-sandbox>\nrun aborted")
+    os._exit(2)
+
+input_filepath = sys.argv[1]
+# print(input_filepath)
+
+file_path = "sandbox/" + input_filepath
+
+if not os.path.isfile(file_path):
+    print("\n Enter path of the file within 'sandbox/' (File does not seem to exist) \n")
+    os._exit(1)
+
 ratex = ""
 rid = 0 # dict populator
 decision = "False"
 ratex_dict = {}
+
 
 l_regex = Lark(r"""
                start: (regex)*
@@ -37,29 +55,47 @@ class MyTransformer(Transformer):
         # os._exit(1)
 
 def IsAperiodicExp(exp):
-    global decision
+    global decision, data
+    want_folder = data["output_params"]["output_folder"]
+
+    insert_flag = ""
+    if(want_folder):
+        insert_flag = "flag := true;\n"
 
     cmd = """
+    rm -rf sandbox/tmp/*;
     touch sandbox/PeriodicList.txt;
     ./bin/gap.sh -r -b -q << EOI
+    flag := false;
+
+    """+insert_flag+"""
+
     LoadPackage(\"automata\");;
     LoadPackage(\"semigroup\");;
     LoadPackage(\"datastructures\");;
 
     rat := RationalExpression(\""""+ exp +"""\");
+    if flag then PrintTo(\"sandbox/tmp/temp1.ratex\", rat); fi;
     # rat := (_____)
     ss := SyntacticSemigroupLang(rat);
 
+    
     Print(\"Aperiodic? \");
     AperiodicStatus := IsAperiodicSemigroup(ss);
+    if flag then PrintTo(\"sandbox/tmp/temp1.aperiodicity\", AperiodicStatus); fi;
     Print(AperiodicStatus);
     Print(\"\\n\");
+
+    aut := RatExpToAut(rat);
+    if flag then PrintTo(\"sandbox/tmp/temp1.dotstring\", DotStringForDrawingAutomaton(aut)); fi;
 
     if AperiodicStatus then
         # aperiodic
         Print(\"\\nTransition Semigroup: \");
-        aut := RatExpToAut(rat);;
+        if flag then PrintTo(\"sandbox/tmp/temp1.automaton\", aut); fi;
         ts := TransitionSemigroup(aut);;
+        tsset := Elements(ts);
+        if flag then PrintTo(\"sandbox/tmp/temp1.semigroup\", tsset); fi;
         Print(ts);
         Print(\"\\n\");
 
@@ -72,6 +108,7 @@ def IsAperiodicExp(exp):
 
         Print(\"\\nMultiplication Table: \\n\");
         mult := MultiplicationTable(mon);
+        if flag then PrintTo(\"sandbox/tmp/temp1.mult\", mult); fi;
         Print(mult);
         Print(\"\\n\");
     else
@@ -80,7 +117,7 @@ def IsAperiodicExp(exp):
         # Print(\"\\nSyntactic Semigroup: \");
         # Print(ss);
 
-        aut := RatExpToAut(rat);
+        if flag then PrintTo(\"sandbox/tmp/temp1.automaton\", aut); fi;
         n := NumberStatesOfAutomaton(aut);
         ts := TransitionSemigroup(aut);
         Print(aut);
@@ -93,13 +130,16 @@ def IsAperiodicExp(exp):
         # Print(\"\\n\");
 
         # Print(\"\\nMultiplication Table: \\n\");
-        # mult := MultiplicationTable(mon);
+        mult := MultiplicationTable(mon);
+        if flag then PrintTo(\"sandbox/tmp/temp1.mult\", mult); fi;
         # OutputLogTo(\"sandbox/PeriodicList.txt\");
         # Print(mon);
         # OutputLogTo();
+
         Print(\"\\n\");
         
         tsset := Elements(ts);
+        if flag then PrintTo(\"sandbox/tmp/temp1.semigroup\", tsset); fi;
         # monset := Elements(mon);
         # monset := [ts[1]];
 

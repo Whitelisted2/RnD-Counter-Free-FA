@@ -87,10 +87,19 @@ with open(file_path, 'r') as file:
 
             G = nx.DiGraph(edges)
             key = "["+ tr_name +"]"
+
+            # f = open("sandbox/tmp/temp1.counters", "w")
+            # f.close()
+
+            f = open("sandbox/tmp/temp1.counters", "a")
             for cycle in nx.simple_cycles(G):
                 word = word_dict[key]
-                print("Mod",len(cycle),"counter for",word)
-            
+                
+                opstring = "Mod "+str(len(cycle))+" counter for "+ word
+                print(opstring)
+                f.write(opstring+"\n")
+
+            f.close()
             tr_unfiltered = ""
                 
     # print("_______________________________________")

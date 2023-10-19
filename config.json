@@ -1,0 +1,15 @@
+{
+    "input_params": {
+        "comment": "is_one_regex also works if alphabet size is known to be < 26 ",
+        "is_one_regex": true,
+        "is_regex_list": false,
+        "is_property_file": false,
+        "input_filepath": "test_regex/input1.txt"
+    },
+    "output_params": {
+        "comment": "output_folder will almost always stay true",
+        "output_folder": true,
+        "output_name": "abcabc",
+        "prefix": ""
+    }
+}
