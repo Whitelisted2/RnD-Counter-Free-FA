@@ -8,7 +8,7 @@ import subprocess
 import sys
 import openpyxl
 
-want_excel = 1
+want_excel = 0
 decision = "False"
 ratex_dict = {}
 rid = 0

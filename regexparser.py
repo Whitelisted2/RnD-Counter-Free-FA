@@ -11,13 +11,13 @@ with open("sandbox/config.json", "r") as json_file:
     data = json.load(json_file)
 
 if len(sys.argv) < 2:
-    print("usage: python3 sandbox/regexparser.py <input-path-in-sandbox>\nrun aborted")
+    print("usage: python3 sandbox/regexparser.py <input-path>\nrun aborted")
     os._exit(2)
 
 input_filepath = sys.argv[1]
 # print(input_filepath)
 
-file_path = "sandbox/" + input_filepath
+file_path = input_filepath
 
 if not os.path.isfile(file_path):
     print("\n Enter path of the file within 'sandbox/' (File does not seem to exist) \n")
@@ -56,7 +56,7 @@ class MyTransformer(Transformer):
 
 def IsAperiodicExp(exp):
     global decision, data
-    want_folder = data["output_params"]["output_folder"]
+    want_folder = data["output_params"]["want_output_folder"]
 
     insert_flag = ""
     if(want_folder):
