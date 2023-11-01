@@ -126,18 +126,12 @@ extern int yydebug;
   enum yytokentype
   {
     IDENTIFIER = 258,
-    DEFTOKEN = 259,
-    RUNTIMEEQ = 260,
-    UGLYTOKEN = 261,
-    BADTOKEN = 262,
-    GOODTOKEN = 263,
-    STAR = 264,
-    LESSTHAN = 265,
-    GREATERTHAN = 266,
-    OPENBRACKET = 267,
-    CLOSEDBRACKET = 268,
-    OR = 269,
-    NEWLINE = 270
+    STAR = 259,
+    LESSTHAN = 260,
+    GREATERTHAN = 261,
+    OPENBRACKET = 262,
+    CLOSEDBRACKET = 263,
+    OR = 264
   };
 #endif
 
@@ -149,7 +143,7 @@ union YYSTYPE
 
 	char *str;
 
-#line 153 "regexParser.tab.c"
+#line 147 "regexParser.tab.c"
 
 };
 typedef union YYSTYPE YYSTYPE;
@@ -466,21 +460,21 @@ union yyalloc
 #endif /* !YYCOPY_NEEDED */
 
 /* YYFINAL -- State number of the termination state.  */
-#define YYFINAL  5
+#define YYFINAL  10
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   36
+#define YYLAST   12
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  16
+#define YYNTOKENS  10
 /* YYNNTS -- Number of nonterminals.  */
-#define YYNNTS  10
+#define YYNNTS  6
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  17
+#define YYNRULES  11
 /* YYNSTATES -- Number of states.  */
-#define YYNSTATES  39
+#define YYNSTATES  17
 
 #define YYUNDEFTOK  2
-#define YYMAXUTOK   270
+#define YYMAXUTOK   264
 
 
 /* YYTRANSLATE(TOKEN-NUM) -- Symbol number corresponding to TOKEN-NUM
@@ -518,16 +512,15 @@ static const yytype_int8 yytranslate[] =
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     1,     2,     3,     4,
-       5,     6,     7,     8,     9,    10,    11,    12,    13,    14,
-      15
+       5,     6,     7,     8,     9
 };
 
 #if YYDEBUG
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    25,    25,    27,    27,    29,    31,    31,    33,    42,
-      46,    56,    60,    69,    73,    79,    83,    85
+       0,    26,    26,    35,    39,    49,    53,    62,    66,    72,
+      76,    78
 };
 #endif
 
@@ -536,11 +529,9 @@ static const yytype_int8 yyrline[] =
    First, the terminals, then, starting at YYNTOKENS, nonterminals.  */
 static const char *const yytname[] =
 {
-  "$end", "error", "$undefined", "IDENTIFIER", "DEFTOKEN", "RUNTIMEEQ",
-  "UGLYTOKEN", "BADTOKEN", "GOODTOKEN", "STAR", "LESSTHAN", "GREATERTHAN",
-  "OPENBRACKET", "CLOSEDBRACKET", "OR", "NEWLINE", "$accept", "program",
-  "program_tail", "term", "newline_tail", "equation", "regex", "regterm",
-  "factor", "base", YY_NULLPTR
+  "$end", "error", "$undefined", "IDENTIFIER", "STAR", "LESSTHAN",
+  "GREATERTHAN", "OPENBRACKET", "CLOSEDBRACKET", "OR", "$accept",
+  "equation", "regex", "regterm", "factor", "base", YY_NULLPTR
 };
 #endif
 
@@ -549,12 +540,11 @@ static const char *const yytname[] =
    (internal) symbol number NUM (which must be that of a token).  */
 static const yytype_int16 yytoknum[] =
 {
-       0,   256,   257,   258,   259,   260,   261,   262,   263,   264,
-     265,   266,   267,   268,   269,   270
+       0,   256,   257,   258,   259,   260,   261,   262,   263,   264
 };
 # endif
 
-#define YYPACT_NINF (-32)
+#define YYPACT_NINF (-6)
 
 #define yypact_value_is_default(Yyn) \
   ((Yyn) == YYPACT_NINF)
@@ -568,10 +558,8 @@ static const yytype_int16 yytoknum[] =
      STATE-NUM.  */
 static const yytype_int8 yypact[] =
 {
-      -1,     3,     9,    -5,    -4,   -32,    -5,   -32,    -1,    10,
-     -32,    -5,     7,   -32,    -8,    12,    -8,     1,     4,    -8,
-     -32,     8,    11,    -7,    15,    -8,   -32,   -32,   -32,   -32,
-      13,    -8,    -8,     6,    19,    16,    -8,    14,   -32
+      -4,    -1,    -4,     4,    -2,    -4,    -6,     5,     2,    -3,
+      -6,    -4,    -6,    -6,    -6,    -6,    -4
 };
 
   /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -579,22 +567,20 @@ static const yytype_int8 yypact[] =
      means the default is an error.  */
 static const yytype_int8 yydefact[] =
 {
-       0,     0,     0,     7,     0,     1,     7,     2,     4,     0,
-       6,     7,     0,     3,     9,     0,     0,     0,     8,    11,
-      13,    15,     0,     0,     0,     0,    12,    14,    17,    16,
-       0,    10,     9,     0,     0,     0,     9,     0,     5
+       3,     0,     0,     0,     2,     5,     7,     9,     0,     0,
+       1,     0,     6,     8,    11,    10,     4
 };
 
   /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-     -32,   -32,    17,    18,    21,   -31,    20,     0,   -19,   -32
+      -6,    -6,     8,     1,    -5,    -6
 };
 
   /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
-      -1,     2,     7,     3,     8,    17,    18,    19,    20,    21
+      -1,     3,     4,     5,     6,     7
 };
 
   /* YYTABLE[YYPACT[STATE-NUM]] -- What to do in state STATE-NUM.  If
@@ -602,42 +588,36 @@ static const yytype_int8 yydefgoto[] =
      number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const yytype_int8 yytable[] =
 {
-      26,    33,    15,     1,    16,    37,    29,    25,     4,     5,
-       6,     9,    26,    14,    12,    22,    24,    27,    25,    30,
-      32,    34,    28,    35,    36,    31,    11,    10,    13,    38,
-       0,     0,     0,     0,     0,     0,    23
+      12,     1,     8,     2,    10,    15,    11,    11,    14,    13,
+       9,    12,    16
 };
 
 static const yytype_int8 yycheck[] =
 {
-      19,    32,    10,     4,    12,    36,    13,    14,     5,     0,
-      15,    15,    31,     6,     4,     3,    15,     9,    14,     4,
-       7,    15,    11,     4,     8,    25,     8,     6,    11,    15,
-      -1,    -1,    -1,    -1,    -1,    -1,    16
+       5,     5,     3,     7,     0,     8,     9,     9,     6,     4,
+       2,    16,    11
 };
 
   /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
      symbol of state STATE-NUM.  */
 static const yytype_int8 yystos[] =
 {
-       0,     4,    17,    19,     5,     0,    15,    18,    20,    15,
-      20,    19,     4,    18,     6,    10,    12,    21,    22,    23,
-      24,    25,     3,    22,    15,    14,    24,     9,    11,    13,
-       4,    23,     7,    21,    15,     4,     8,    21,    15
+       0,     5,     7,    11,    12,    13,    14,    15,     3,    12,
+       0,     9,    14,     4,     6,     8,    13
 };
 
   /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_int8 yyr1[] =
 {
-       0,    16,    17,    18,    18,    19,    20,    20,    21,    21,
-      22,    22,    23,    23,    24,    24,    25,    25
+       0,    10,    11,    11,    12,    12,    13,    13,    14,    14,
+      15,    15
 };
 
   /* YYR2[YYN] -- Number of symbols on the right hand side of rule YYN.  */
 static const yytype_int8 yyr2[] =
 {
-       0,     2,     2,     3,     1,    15,     2,     0,     1,     0,
-       3,     1,     2,     1,     2,     1,     3,     3
+       0,     2,     1,     0,     3,     1,     2,     1,     2,     1,
+       3,     3
 };
 
 
@@ -1332,8 +1312,8 @@ yyreduce:
   YY_REDUCE_PRINT (yyn);
   switch (yyn)
     {
-  case 8:
-#line 33 "regexParser.y"
+  case 2:
+#line 26 "regexParser.y"
                 {
 	for(int i=0;i<strlen((yyvsp[0].str));i++)
 	{
@@ -1344,11 +1324,11 @@ yyreduce:
 	free((yyvsp[0].str));
 	charcount=0;
 }
-#line 1348 "regexParser.tab.c"
+#line 1328 "regexParser.tab.c"
     break;
 
-  case 10:
-#line 46 "regexParser.y"
+  case 4:
+#line 39 "regexParser.y"
                         {
 	//$$= RatExpOnnLetters(#,"union",[$1,$3])
 	(yyval.str)=malloc((strlen((yyvsp[-2].str))+strlen((yyvsp[0].str))+32)*sizeof(char));
@@ -1360,19 +1340,19 @@ yyreduce:
 	free((yyvsp[-2].str));
 	free((yyvsp[0].str));
 }
-#line 1364 "regexParser.tab.c"
+#line 1344 "regexParser.tab.c"
     break;
 
-  case 11:
-#line 56 "regexParser.y"
+  case 5:
+#line 49 "regexParser.y"
             {
 	(yyval.str)=(yyvsp[0].str);
 }
-#line 1372 "regexParser.tab.c"
+#line 1352 "regexParser.tab.c"
     break;
 
-  case 12:
-#line 60 "regexParser.y"
+  case 6:
+#line 53 "regexParser.y"
                         {
 	(yyval.str)=malloc((strlen((yyvsp[-1].str))+strlen((yyvsp[0].str))+34)*sizeof(char));
 	strcpy((yyval.str),"RatExpOnnLetters(#,\"product\",[\0");
@@ -1383,19 +1363,19 @@ yyreduce:
 	free((yyvsp[-1].str));
 	free((yyvsp[0].str));
 }
-#line 1387 "regexParser.tab.c"
+#line 1367 "regexParser.tab.c"
     break;
 
-  case 13:
-#line 69 "regexParser.y"
+  case 7:
+#line 62 "regexParser.y"
            {
 	(yyval.str)=(yyvsp[0].str);
 }
-#line 1395 "regexParser.tab.c"
+#line 1375 "regexParser.tab.c"
     break;
 
-  case 14:
-#line 73 "regexParser.y"
+  case 8:
+#line 66 "regexParser.y"
                   {
 	(yyval.str)=malloc((strlen((yyvsp[-1].str))+28)*sizeof(char));
 	strcpy((yyval.str),"RatExpOnnLetters(#,\"star\",\0");
@@ -1403,27 +1383,27 @@ yyreduce:
 	strcat((yyval.str),")\0");
 	free((yyvsp[-1].str));
 }
-#line 1407 "regexParser.tab.c"
+#line 1387 "regexParser.tab.c"
     break;
 
-  case 15:
-#line 79 "regexParser.y"
+  case 9:
+#line 72 "regexParser.y"
          {
 	(yyval.str)=(yyvsp[0].str);
 }
-#line 1415 "regexParser.tab.c"
+#line 1395 "regexParser.tab.c"
     break;
 
-  case 16:
-#line 83 "regexParser.y"
+  case 10:
+#line 76 "regexParser.y"
                                       {
 	(yyval.str)=(yyvsp[-1].str);
 }
-#line 1423 "regexParser.tab.c"
+#line 1403 "regexParser.tab.c"
     break;
 
-  case 17:
-#line 85 "regexParser.y"
+  case 11:
+#line 78 "regexParser.y"
                                     {
 	ind=0;
 	for(int i=0;i<strlen((yyvsp[-1].str));i++)
@@ -1437,11 +1417,11 @@ yyreduce:
 	strcat((yyval.str),tr);
 	strcat((yyval.str),"])\0");
 }
-#line 1441 "regexParser.tab.c"
+#line 1421 "regexParser.tab.c"
     break;
 
 
-#line 1445 "regexParser.tab.c"
+#line 1425 "regexParser.tab.c"
 
       default: break;
     }
@@ -1673,7 +1653,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 99 "regexParser.y"
+#line 92 "regexParser.y"
 
 
 

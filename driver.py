@@ -31,7 +31,7 @@ if not os.path.isdir(outputfolder):
 if(data["output_params"]["want_output_folder"] == True):
 
     cmd = """ 
-    python3 sandbox/regexparser.py """ + inputfilepath + """ ;
+    python3 sandbox/newregexparser.py """ + inputfilepath + """ ;
     """
     output = subprocess.check_output(cmd, shell=True, stderr=subprocess.STDOUT)
     output = output.decode('utf-8')
@@ -64,6 +64,3 @@ else:
     output = output.decode('utf-8')
     print(output)
 
-# to rewrite to json if reqd
-# with open("sandbox/data_file.json", "w") as write_file:
-#     json.dump(data, write_file, indent=4)

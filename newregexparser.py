@@ -4,24 +4,32 @@
 
 # from lark import Lark, Transformer
 import subprocess
-# import os
+import os
 import sys
 import openpyxl
+import json
+
+with open("sandbox/config.json", "r") as json_file:
+    data = json.load(json_file)
 
 want_excel = 0
 decision = "False"
 ratex_dict = {}
 rid = 0
-filepath = "sandbox/property_files/shortlist.txt" # default
+file_path = "sandbox/property_files/shortlist.txt" # default
 
 if len(sys.argv) == 2:
-    filepath = sys.argv[1] # within sandbox ...
+    file_path = sys.argv[1] # within sandbox ...
+
+if not os.path.isfile(file_path):
+    print("\n Enter path of the file within 'sandbox/' (File does not seem to exist) \n")
+    os._exit(1)
 
 command = """ 
     cd sandbox/regex_formatter/;
     make clean;
     make compiler;
-    bash runme.sh ../../"""+ filepath +""" ../output.txt;
+    bash runme.sh ../../"""+ file_path +""" ../output.txt;
     """
 regex_output = subprocess.check_output(command, shell=True, stderr=subprocess.STDOUT)
 regex_output = regex_output.decode('utf-8')
@@ -29,45 +37,64 @@ regex_output = regex_output.decode('utf-8')
 
 
 def IsAperiodicExp(line):
-    global decision, rid, ratex_dict
+    global decision, rid, ratex_dict, data
+    want_folder = data["output_params"]["want_output_folder"]
+
+    insert_flag = ""
+    if(want_folder):
+        insert_flag = "flag := true;\n"
+
     cmd = """
     
     touch sandbox/PeriodicList.txt;
     ./bin/gap.sh -r -b -q << EOI
+    flag := false;
+
+    """+insert_flag+"""
+
     LoadPackage(\"automata\");;
     LoadPackage(\"semigroup\");;
     LoadPackage(\"datastructures\");;
 
     rat := """+ line +""";
-    Print(\"\\n----\");
+    # Print(\"\\n----\");
     Print(rat);
-    Print(\"|\");
+    # Print(\"|\");
+    if flag then PrintTo(\"sandbox/tmp/temp1.ratex\", rat); fi;
 
     ss := SyntacticSemigroupLang(rat);;
     
     Print(\"\\nAperiodic? \");
     AperiodicStatus := IsAperiodicSemigroup(ss);
+    if flag then PrintTo(\"sandbox/tmp/temp1.aperiodicity\", AperiodicStatus); fi;
     Print(AperiodicStatus);
     Print(\"\\n\");
+
+    aut := RatExpToAut(rat);;
+    Print(aut);
+    if flag then PrintTo(\"sandbox/tmp/temp1.dotstring\", DotStringForDrawingAutomaton(aut)); fi;
 
     if AperiodicStatus then
         # aperiodic
         Print(\"\\nTransition Semigroup: \");
-        aut := RatExpToAut(rat);;
+        if flag then PrintTo(\"sandbox/tmp/temp1.automaton\", aut); fi;
         ts := TransitionSemigroup(aut);;
-        # Print(ts);
-        # Print(\"\\n\");
+        tsset := Elements(ts);
+        if flag then PrintTo(\"sandbox/tmp/temp1.semigroup\", tsset); fi;
+        Print(ts);
+        Print(\"\\n\");
 
         ss3 := SemigroupByGenerators(ts);;
         gen := GeneratorsOfSemigroup(ss3);;
         mon := MonoidByGenerators(gen);;
 
-        # Print(\"\\nGenerators: \");
-        # Print(gen);
+        Print(\"\\nGenerators: \");
+        Print(gen);
 
         Print(\"\\nMultiplication Table: \\n\");
         mult := MultiplicationTable(mon);
-        # Print(mult);
+        if flag then PrintTo(\"sandbox/tmp/temp1.mult\", mult); fi;
+        Print(mult);
         Print(\"\\n\");
     else
         # periodic
@@ -75,7 +102,7 @@ def IsAperiodicExp(line):
         # Print(\"\\nSyntactic Semigroup: \");
         # Print(ss);
 
-        aut := RatExpToAut(rat);
+        if flag then PrintTo(\"sandbox/tmp/temp1.automaton\", aut); fi;
         n := NumberStatesOfAutomaton(aut);
         ts := TransitionSemigroup(aut);
         Print(aut);
@@ -88,13 +115,16 @@ def IsAperiodicExp(line):
         # Print(\"\\n\");
 
         # Print(\"\\nMultiplication Table: \\n\");
-        # mult := MultiplicationTable(mon);
+        mult := MultiplicationTable(mon);
+        if flag then PrintTo(\"sandbox/tmp/temp1.mult\", mult); fi;
         # OutputLogTo(\"sandbox/PeriodicList.txt\");
         # Print(mon);
         # OutputLogTo();
+
         Print(\"\\n\");
         
         tsset := Elements(ts);
+        if flag then PrintTo(\"sandbox/tmp/temp1.semigroup\", tsset); fi;
         # monset := Elements(mon);
         # monset := [ts[1]];
 
@@ -171,6 +201,8 @@ def IsAperiodicExp(line):
             od;;
         OutputLogTo();;
 
+        
+
     fi;
     quit;
     EOI
@@ -178,17 +210,19 @@ def IsAperiodicExp(line):
     # print(cmd)
     output = subprocess.check_output(cmd, shell=True, stderr=subprocess.STDOUT)
     output = output.decode('utf-8')
-    # print(output)
-    print("Processing ratex [", rid+1, "]")
+    print(output)
+    # print("Processing ratex [", rid+1, "]")
 
     output_arr = output.split("\n")
     temprat = ""
+    # print(output_arr)
     for ele in output_arr:
-        if ele[-1] == "\\":
-            temprat += ele[:-1]
-        if ele[-1] == "|":
-            temprat += ele[:-1]
-            break
+        if len(ele)>1:
+            if ele[-1] == "\\":
+                temprat += ele[:-1]
+            if ele[-1] == "|":
+                temprat += ele[:-1]
+                break
     genrat = temprat[4:]
 
     # print(output)

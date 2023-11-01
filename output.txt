@@ -1,0 +1,1 @@
+RatExpOnnLetters(2,"star",RatExpOnnLetters(2,"product",[RatExpOnnLetters(2,"product",[RatExpOnnLetters(2,"product",[RatExpOnnLetters(2,[],[1]),RatExpOnnLetters(2,[],[2])]),RatExpOnnLetters(2,[],[1])]),RatExpOnnLetters(2,[],[2])]));

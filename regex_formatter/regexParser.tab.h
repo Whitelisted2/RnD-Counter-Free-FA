@@ -50,18 +50,12 @@ extern int yydebug;
   enum yytokentype
   {
     IDENTIFIER = 258,
-    DEFTOKEN = 259,
-    RUNTIMEEQ = 260,
-    UGLYTOKEN = 261,
-    BADTOKEN = 262,
-    GOODTOKEN = 263,
-    STAR = 264,
-    LESSTHAN = 265,
-    GREATERTHAN = 266,
-    OPENBRACKET = 267,
-    CLOSEDBRACKET = 268,
-    OR = 269,
-    NEWLINE = 270
+    STAR = 259,
+    LESSTHAN = 260,
+    GREATERTHAN = 261,
+    OPENBRACKET = 262,
+    CLOSEDBRACKET = 263,
+    OR = 264
   };
 #endif
 
@@ -73,7 +67,7 @@ union YYSTYPE
 
 	char *str;
 
-#line 77 "regexParser.tab.h"
+#line 71 "regexParser.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
