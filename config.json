@@ -3,7 +3,7 @@
         "comment": "is_one_regex also works if alphabet size is known to be < 26 ",
         "is_one_regex": true,
         "is_property_file": false,
-        "input_filepath": "sandbox/test_regex/regex1.txt"
+        "input_filepath": "sandbox/test_regex/input1.txt"
     },
     "output_params": {
         "comment": "output_folder will almost always stay true. use 'output' if you want timestamp as name!",

@@ -105,7 +105,7 @@ def IsAperiodicExp(line):
         if flag then PrintTo(\"sandbox/tmp/temp1.automaton\", aut); fi;
         n := NumberStatesOfAutomaton(aut);
         ts := TransitionSemigroup(aut);
-        Print(aut);
+        # Print(aut);
         ss3 := SemigroupByGenerators(ts);
         gen := GeneratorsOfSemigroup(ss3);
         mon := MonoidByGenerators(gen);
@@ -121,7 +121,7 @@ def IsAperiodicExp(line):
         # Print(mon);
         # OutputLogTo();
 
-        Print(\"\\n\");
+        # Print(\"\\n\");
         
         tsset := Elements(ts);
         if flag then PrintTo(\"sandbox/tmp/temp1.semigroup\", tsset); fi;
@@ -200,7 +200,7 @@ def IsAperiodicExp(line):
                 Print(\"\\n\");;
             od;;
         OutputLogTo();;
-
+        
         
 
     fi;
@@ -214,22 +214,6 @@ def IsAperiodicExp(line):
     # print("Processing ratex [", rid+1, "]")
 
     output_arr = output.split("\n")
-    temprat = ""
-    # print(output_arr)
-    for ele in output_arr:
-        if len(ele)>1:
-            if ele[-1] == "\\":
-                temprat += ele[:-1]
-            if ele[-1] == "|":
-                temprat += ele[:-1]
-                break
-    genrat = temprat[4:]
-
-    # print(output)
-    # genrat = ""
-    # for outputline in output_arr:
-    #      if(len(outputline) > 3 and outputline[:4] == "----"):
-    #           genrat = outputline[4:]
 
     if output.find("Aperiodic? true") == -1:
         decision = "periodic"
@@ -249,7 +233,7 @@ def IsAperiodicExp(line):
         output2 = subprocess.check_output(cmd2, shell=True, stderr=subprocess.STDOUT)
         output2 = output2.decode('utf-8')
     rid += 1
-    ratex_dict[rid] = (genrat, decision)
+    ratex_dict[rid] = (output_arr[2], decision)
 
 
 with open("sandbox/output.txt", "r") as file:

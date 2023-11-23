@@ -1,4 +1,5 @@
 import networkx as nx
+import graphviz as gv
 from lark import Lark, Transformer
 import ast # for (list) string to list
 
@@ -92,6 +93,7 @@ with open(file_path, 'r') as file:
             # f.close()
 
             f = open("sandbox/tmp/temp1.counters", "a")
+            # print(nx.simple_cycles(G))
             for cycle in nx.simple_cycles(G):
                 word = word_dict[key]
                 

@@ -1,1 +1,1 @@
-RatExpOnnLetters(2,"star",RatExpOnnLetters(2,"product",[RatExpOnnLetters(2,"product",[RatExpOnnLetters(2,"product",[RatExpOnnLetters(2,[],[1]),RatExpOnnLetters(2,[],[2])]),RatExpOnnLetters(2,[],[1])]),RatExpOnnLetters(2,[],[2])]));
+RatExpOnnLetters(3,"star",RatExpOnnLetters(3,"product",[RatExpOnnLetters(3,"product",[RatExpOnnLetters(3,"product",[RatExpOnnLetters(3,"product",[RatExpOnnLetters(3,"product",[RatExpOnnLetters(3,[],[1]),RatExpOnnLetters(3,[],[2])]),RatExpOnnLetters(3,[],[3])]),RatExpOnnLetters(3,[],[1])]),RatExpOnnLetters(3,[],[2])]),RatExpOnnLetters(3,[],[3])]));

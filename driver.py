@@ -4,6 +4,7 @@ from datetime import datetime
 import sys
 import re
 import os
+from graphviz import *
 
 with open("sandbox/config.json", "r") as json_file:
     data = json.load(json_file)
@@ -52,6 +53,7 @@ if(data["output_params"]["want_output_folder"] == True):
         rm -rf sandbox/tmp/* ;
         """
     output = subprocess.check_output(cmd, shell=True, stderr=subprocess.STDOUT)
+    render('dot', 'png', prefix +".dotstring").replace('\\', '/')
     
 
 else:
