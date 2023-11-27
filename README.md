@@ -29,3 +29,4 @@ This repository contains files related to RnD Project (Autumn 2023).
 ![image](https://github.com/Whitelisted2/RnD-Counter-Free-FA/assets/90827725/4ade3453-4566-41ed-8182-36611ec443dc)
 
 
+> "Energy may be likened to the bending of a crossbow; decision, to the releasing of a trigger" — Sun Tzu, The Art of War
