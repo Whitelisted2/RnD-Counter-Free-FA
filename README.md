@@ -29,7 +29,7 @@ Example of config file configurations are as follows:
   - Line 4: Initial state of automaton (one positive integer number)
   - Line 5: Final state (or states, separated by commas)
   - Line 6 onwards: Transition table, with each line denoting the resultant state/states for the transition from each given state based on some alphabet. (Empty/dead entries are not handled as of now, so in such cases, please use a trap state)
-- Two examples of such an input file are below: (Other examples are listed in the ```test_aut/``` directory.
+- Two examples of such an input file are below: (Other examples are listed in the ```test_aut/``` directory.)
 
 ![image](https://github.com/Whitelisted2/RnD-Counter-Free-FA/assets/90827725/37638243-0c92-4aac-8b1b-e059d6468848)
 
