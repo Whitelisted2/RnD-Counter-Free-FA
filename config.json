@@ -1,14 +1,13 @@
 {
     "input_params": {
-        "comment": "is_one_regex also works if alphabet size is known to be < 26 ",
-        "is_one_regex": true,
+        "is_regex_or_aut": "reg",
         "is_property_file": false,
-        "input_filepath": "sandbox/test_regex/input1.txt"
+        "input_filepath": "test_regex/input1.txt"
     },
     "output_params": {
         "comment": "output_folder will almost always stay true. use 'output' if you want timestamp as name!",
         "want_output_folder": true,
-        "output_folder": "sandbox/output/newfolder",
-        "output_name": "myregex1"
+        "output_folder": "output/newfolder",
+        "output_name": "test1"
     }
 }

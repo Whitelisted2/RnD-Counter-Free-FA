@@ -20,6 +20,7 @@ file_path = "sandbox/property_files/shortlist.txt" # default
 
 if len(sys.argv) == 2:
     file_path = sys.argv[1] # within sandbox ...
+    # file_path = "sandbox/"+file_path
 
 if not os.path.isfile(file_path):
     print("\n Enter path of the file within 'sandbox/' (File does not seem to exist) \n")

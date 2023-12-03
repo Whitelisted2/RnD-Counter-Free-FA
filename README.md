@@ -4,8 +4,8 @@ This repository contains files related to RnD Project (Autumn 2023).
 ### Instructions
 - Download the latest version of the GAP software from [here](https://www.gap-system.org/Download/).
 - Create a folder called sandbox within GAP (may appear as ```gap-<version>/```), and place all of this repo's files in this ```sandbox/``` folder.
-- Modify ```sandbox/config.json``` according to the input you need, and to specify output location(s).
-  - ```input_filepath``` refers to the location of the input file.
+- Modify ```sandbox/config.json``` according to the input you need, and to specify output location(s). (Note that, here, paths begin from the ```sandbox/``` folder. Absolute paths would create issues in the current form of the code.)
+  - ```input_filepath``` refers to the location of the input file. 
   - ```output_folder``` refers to the folder that would be created to store all of the output files. Ensure that this folder does not have files that you want to keep saved, and that the directory that holds this folder exists already.
   - ```output_name``` denotes the common prefix that the output files will have, such as ```<output_name>.dotstring```, ```<output_name>.mult```, etc.
 - Run ```python3 sandbox/driver.py``` to generate output according to the specified inputs.

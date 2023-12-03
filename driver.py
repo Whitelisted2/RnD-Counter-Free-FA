@@ -11,7 +11,7 @@ with open("sandbox/config.json", "r") as json_file:
 # print(data)
 
 # data is the whole dictionary
-inputfilepath = data["input_params"]["input_filepath"] # within sandbox
+inputfilepath = "sandbox/"+data["input_params"]["input_filepath"] # within sandbox
 if not os.path.isfile(inputfilepath):
     print("ABORTED: Bad input filepath in config.")
     os._exit(3)
@@ -19,7 +19,7 @@ if not os.path.isfile(inputfilepath):
 
 # use given folder name, else 
 file_name_op = [ re.sub(r'\W+', '', str(data["output_params"]["output_name"])) if (data["output_params"]["output_name"] != "output" and re.sub(r'\W+', '', data["output_params"]["output_name"]) != "") else re.sub(r'\W+', '', str(datetime.now().strftime("%H:%M:%S"))) ]
-outputfolder = data["output_params"]["output_folder"] # to make new folder
+outputfolder = "sandbox/"+data["output_params"]["output_folder"] # to make new folder
 prefix = outputfolder
 if not os.path.isdir(outputfolder):
     try:
