@@ -26,20 +26,37 @@ if not os.path.isfile(file_path):
     print("\n Enter path of the file within 'sandbox/' (File does not seem to exist) \n")
     os._exit(1)
 
-command = """ 
-    cd sandbox/regex_formatter/;
-    make clean;
-    make compiler;
-    bash runme.sh ../../"""+ file_path +""" ../output.txt;
+aut_output = ""
+if(data["input_params"]["is_regex_or_aut"] == "regex"):
+    command = """ 
+        cd sandbox/regex_formatter/;
+        make clean;
+        make compiler;
+        bash runme.sh ../../"""+ file_path +""" ../output.txt;
+        """
+    regex_output = subprocess.check_output(command, shell=True, stderr=subprocess.STDOUT)
+    regex_output = regex_output.decode('utf-8')
+elif(data["input_params"]["is_regex_or_aut"] == "aut"):
+    command = """
+    python3 sandbox/automatonparser.py """+ file_path +"""
     """
-regex_output = subprocess.check_output(command, shell=True, stderr=subprocess.STDOUT)
-regex_output = regex_output.decode('utf-8')
+    aut_output = subprocess.check_output(command, shell=True, stderr=subprocess.STDOUT)
+    aut_output = aut_output.decode('utf-8')
+    print(aut_output)
+    # os._exit(5)
 # print(regex_output)
 
 
 def IsAperiodicExp(line):
     global decision, rid, ratex_dict, data
     want_folder = data["output_params"]["want_output_folder"]
+
+    if(data["input_params"]["is_regex_or_aut"] == "regex"):
+        pass
+    elif(data["input_params"]["is_regex_or_aut"] == "aut"):
+        # print("linnene",line)
+        line = "AutomatonToRatExp("+ line +");"
+        print(line)
 
     insert_flag = ""
     if(want_folder):
@@ -50,13 +67,14 @@ def IsAperiodicExp(line):
     touch sandbox/PeriodicList.txt;
     ./bin/gap.sh -r -b -q << EOI
     flag := false;
-
+    regexflag := true;
     """+insert_flag+"""
 
     LoadPackage(\"automata\");;
     LoadPackage(\"semigroup\");;
 
-    rat := """+ line +""";
+    rat := """+ line +"""
+    
     Print(rat);
     if flag then PrintTo(\"sandbox/tmp/temp1.ratex\", rat); fi;
 
@@ -193,14 +211,16 @@ def IsAperiodicExp(line):
     rid += 1
     ratex_dict[rid] = (output_arr[2], decision)
 
-
-with open("sandbox/output.txt", "r") as file:
-    # open the regex inductive file
-    lines = file.read()
-    lines = lines.split("\n")
-    for line in lines:
-        if line != "":
-            IsAperiodicExp(line)
+if(data["input_params"]["is_regex_or_aut"] == "regex"):
+    with open("sandbox/output.txt", "r") as file:
+        # open the regex inductive file
+        lines = file.read()
+        lines = lines.split("\n")
+        for line in lines:
+            if line != "":
+                IsAperiodicExp(line)
+elif(data["input_params"]["is_regex_or_aut"] == "aut"):
+     IsAperiodicExp(aut_output)
 
 if want_excel:
        workbook = openpyxl.Workbook()

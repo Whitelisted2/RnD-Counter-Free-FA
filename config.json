@@ -1,8 +1,8 @@
 {
     "input_params": {
-        "is_regex_or_aut": "reg",
+        "is_regex_or_aut": "aut",
         "is_property_file": false,
-        "input_filepath": "test_regex/input1.txt"
+        "input_filepath": "test_aut/ababmin.txt"
     },
     "output_params": {
         "comment": "output_folder will almost always stay true. use 'output' if you want timestamp as name!",
